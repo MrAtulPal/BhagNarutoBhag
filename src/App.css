@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", cursive;
+}
+
+.hidden{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.top{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* position: absolute; */
+  /* gap: 20px; */
+  top: 0;
+  color: white;
+  padding: 0 20px;
+}
+
+.top img{
+  height: 15vh;
+}
+
+.play{
+  background: #b164ff;
+  margin: auto;
+  outline: none;
+  border: none;
+}
+
+.play:hover{
+  outline: none;
+  border: none;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game {
+  height: 80%;
+  width: 80%;
+  border: 1px solid black;
+  background-image: url("./assets/BgImg/bg-template3.gif");
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+
+#hero{
+  position: absolute;
+  top: 450px;
+  left: 50px;
+}
+
+#villan{
+  position: absolute;
+  top: 439px;
+  left: 950px;
+  transform: scaleX(-1);
+  transition: all ease-in-out;
+}
+
+.villan-animation{
+  animation: villan 3s infinite;
+
+}
+
+#villan img{
+  height: 20vh;
+}
+
+.jump-animation{
+  animation: jump 2s linear;
+}
+
+@keyframes villan {
+  0%{
+    left: 950px;
+
+  }
+  100%{
+    left: -200px
+  }
+}
+
+@keyframes jump {
+  0%{
+    top: 460px;
+  }
+
+  50%{
+    top: 150px;
+  }
+
+  75%{
+    top: 150px;
+  }
+
+  100%{
+    top: 460px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+ #game{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-image: url("./assets/BgImg/bg-template.gif");
+ }
+
+ #hero{
+  top: 240px;
+  left: 0;
+ }
+
+ #hero img{
+  height: 25vh;
+ }
+
+ #villan{
+  top: 226px;
+ }
+
+ #villan img{
+  height: 30vh;
+ }
+}

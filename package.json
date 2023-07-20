@@ -2,15 +2,14 @@
   "name": "naruto-game",
   "private": true,
   "version": "0.0.0",
-  "homepage": "http://MrAtulPal.github.io/BhagNarutoBhag",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "gh-pages": "^5.0.0",

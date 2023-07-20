@@ -62,13 +62,13 @@
 
 #hero{
   position: absolute;
-  top: 450px;
+  top: 460px;
   left: 50px;
 }
 
 #villan{
   position: absolute;
-  top: 439px;
+  top: 453px;
   left: 950px;
   transform: scaleX(-1);
   transition: all ease-in-out;

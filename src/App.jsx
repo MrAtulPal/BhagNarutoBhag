@@ -3,32 +3,38 @@ import Swal from "sweetalert2";
 import "./App.css";
 
 import hero from "./assets/narutoImg/hinata.gif";
+import naruto from "./assets/narutoImg/narutoNoBg.gif";
 import viallan from "./assets/villans/danzo.gif";
-import Logo from "./assets/narutoImg/naruto.png"
+import Logo from "./assets/narutoImg/naruto.png";
+import rotate from './assets/rotate.gif'
 
 function App() {
 
-  // let potrait = window.matchMedia("(orientation:portrait)").matches
-  // if(potrait){
-  //   alert("Turn to landscape mode")
-  // }
+
+  window
+    .matchMedia("(orientation:portrait)")
+    .addEventListener("change", (e) => {
+      let portrait = e.matches;
+      setPortrait(portrait);
+      console.log(portrait)
+    });
 
   let heroRef = useRef(null);
   let villanRef = useRef(null);
   let highScore = useRef(null);
-  let Score=useRef(null);
-
+  let Score = useRef(null);
 
   const [jump, setJump] = useState(false);
   const [ispause, setIspause] = useState(false);
-  let [score,setScore] = useState(0);
+  let [score, setScore] = useState(0);
+  const [portrait,setPortrait]=useState(false)
 
   useEffect(() => {
     const handleGameLogic = () => {
-      if(ispause === false){
-        setScore(score)
-      }else if(ispause===true){
-        setScore(score++)
+      if (ispause === false) {
+        setScore(score);
+      } else if (ispause === true) {
+        setScore(score++);
       }
 
       let Hero = heroRef.current;
@@ -41,18 +47,27 @@ function App() {
         window.getComputedStyle(Villan).getPropertyValue("left")
       );
 
-      if ( villan_left < 0 & villan_left > -50 &  Hero_top > 300) {
+      if(portrait===false){
+      if ((villan_left < 0) & (villan_left > -50) & (Hero_top > 300)) {
         Swal.fire("Game Over");
         // console.log("over")
-        setScore(score)
-        setIspause(false)
+        setScore(score);
+        setIspause(false);
       }
+    }
 
+    if (window.matchMedia("(max-width: 770px)").matches) {
+      if((villan_left < 0) & (villan_left > -50) & (Hero_top > 150)){
+        Swal.fire("Game Over");
+        // console.log("over")
+        setScore(score);
+        setIspause(false);
+      }
+    } 
+  }
 
-    };
-    
     const handleJumpTimeout = () => {
-      if(jump === true){
+      if (jump === true) {
         setJump(false);
       }
     };
@@ -67,10 +82,10 @@ function App() {
       clearInterval(gameInterval);
       // window.removeEventListener("keydown", jumpHero); // Remove the keydown event listener on component unmount
     };
-  }, [jump,ispause]);
+  }, [jump, ispause]);
 
   const jumpHero = (e) => {
-    if ( e.key === "ArrowUp") {
+    if (e.key === "ArrowUp") {
       if (jump === false) {
         setJump(!jump);
       }
@@ -79,19 +94,26 @@ function App() {
 
   return (
     <>
-      <div id="game" >
-        <div className="top"> 
+      {portrait ? <div className="ChangeModal">Rotate You device! 
+      <img src={rotate} style="height:'25vh'"/>
+      </div>: 
+      <div id="game">
+        <div className="top">
           <img src={Logo} alt="logo" />
-          <button className="play" onClick={() => {setIspause(!ispause); setScore(0)}}>
+          <button
+            className="play"
+            onClick={() => {
+              setIspause(!ispause);
+              setScore(0);
+            }}
+          >
             {ispause ? "Pause" : "Play"}
           </button>
           <div>
             {/* <div ref={highScore}>
             HighScore :{score}
             </div> */}
-            <div ref={Score}>
-            Score : {score}
-            </div>
+            <div ref={Score} className='score'>Score : {score}</div>
           </div>
         </div>
 
@@ -99,9 +121,9 @@ function App() {
           id="hero"
           className={`${jump ? "jump-animation" : ""}`}
           ref={heroRef}
-          onClick={()=>setJump(!jump)}
+          onClick={() => setJump(!jump)}
         >
-          <img src={hero} alt="" />
+          <img src={naruto} alt="" />
         </div>
         <div
           id="villan"
@@ -110,7 +132,7 @@ function App() {
         >
           <img src={viallan} alt="" />
         </div>
-      </div>
+      </div>}
     </>
   );
 }

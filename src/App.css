@@ -134,68 +134,68 @@
   }
 }
 
-@media screen and (max-width: 770px) {
- #game{
-  height: 400px;
-  width: 700px;
-  overflow: hidden;
-  background-image: url("./assets/BgImg/bg-template.gif");
- }
+/* @media screen and (max-width: 1000px) {
+  body {
+    background-color: black;
+  }
+} */
 
- #hero{
-  top: 265px;
-  left: 10px;
-
- }
-
- #hero img{
-  height: 35vh;
-
- }
-
- #villan{
-  top: 268px;
-  left: 469px;
- }
-
- #villan img{
-  height: 30vh;
- }
-
- @keyframes jump {
-  0%{
-    top: 265px;
+@media screen and (max-width: 1000px) {
+  #game {
+    height: 400px;
+    width: 700px;
+    overflow: hidden;
+    background-image: url("./assets/BgImg/bg-template.gif");
   }
 
-  50%{
-    top: 50px;
+  #hero {
+    top: 270px;
+    left: 10px;
   }
 
-  75%{
-    top: 50px;
+  #hero img {
+    height: 35vh;
   }
 
-  100%{
-    top: 265px;
-  }
-}
-
-@keyframes villan {
-  0%{
+  #villan {
+    top: 268px;
     left: 469px;
-
   }
-  100%{
-    left: -200px
+
+  #villan img {
+    height: 30vh;
   }
-}
 
-.top img{
-  height: 20vh;
-}
+  @keyframes jump {
+    0% {
+      top: 270px;
+    }
+    50% {
+      top: 50px;
+    }
+    75% {
+      top: 50px;
+    }
+    100% {
+      top: 270px;
+    }
+  }
 
-.top .score{
-  font-size: 12px;
-  color: black;
-}
+  @keyframes villan {
+    0% {
+      left: 469px;
+    }
+    100% {
+      left: -200px;
+    }
+  }
+
+  .top img {
+    height: 20vh;
+  }
+
+  .top .score {
+    font-size: 12px;
+    color: black;
+  }
 }

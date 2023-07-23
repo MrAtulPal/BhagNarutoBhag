@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import "./App.css";
 
-import hero from "./assets/narutoImg/hinata.gif";
 import naruto from "./assets/narutoImg/narutoNoBg.gif";
 import viallan from "./assets/villans/danzo.gif";
 import Logo from "./assets/narutoImg/naruto.png";
@@ -56,7 +55,7 @@ function App() {
       }
     }
 
-    if (window.matchMedia("(max-width: 770px)").matches) {
+    if (window.matchMedia("(max-width: 1000px)").matches) {
       if((villan_left < 0) & (villan_left > -50) & (Hero_top > 150)){
         Swal.fire("Game Over");
         // console.log("over")
@@ -95,8 +94,8 @@ function App() {
   return (
     <>
       {portrait ? <div className="ChangeModal">Rotate You device! 
-      <img src={rotate} style="height:'25vh'"/>
-      </div>: 
+      <img src={rotate} />
+      </div>: <>
       <div id="game">
         <div className="top">
           <img src={Logo} alt="logo" />
@@ -106,7 +105,7 @@ function App() {
               setIspause(!ispause);
               setScore(0);
             }}
-          >
+          > 
             {ispause ? "Pause" : "Play"}
           </button>
           <div>
@@ -132,7 +131,7 @@ function App() {
         >
           <img src={viallan} alt="" />
         </div>
-      </div>}
+      </div></>}
     </>
   );
 }

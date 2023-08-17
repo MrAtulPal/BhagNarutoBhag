@@ -6,15 +6,25 @@
   font-family: "Press Start 2P", cursive;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.show{
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.arrow {
+  height: 30px;
+  padding: 20px;
+}
+
+.show {
   display: block;
 }
 
-.ChangeModal{
+.ChangeModal {
   height: 100%;
   width: 100%;
   position: fixed;
@@ -28,7 +38,7 @@
   align-items: center;
 }
 
-.top{
+.top {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -39,18 +49,23 @@
   padding: 0 20px;
 }
 
-.top img{
+.top img {
   height: 15vh;
 }
 
-.play{
+.home_start-game {
+  font-size: 34px;
+  color: #ff6300;
+}
+
+.play {
   background: #b164ff;
   margin: auto;
   outline: none;
   border: none;
 }
 
-.play:hover{
+.play:hover {
   outline: none;
   border: 1px solid #b164ff;
   background-color: transparent;
@@ -64,7 +79,7 @@
   justify-content: center;
 }
 
-#game {
+.game {
   height: 80%;
   width: 80%;
   border: 1px solid black;
@@ -74,62 +89,93 @@
   overflow: hidden;
 }
 
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+  color: white;
+  cursor: pointer;
+}
 
-#hero{
+#hero {
   position: absolute;
   top: 450px;
   left: 50px;
 }
 
-#hero img{
+#hero img {
   height: 22vh;
 }
 
-#villan{
+#villan {
   position: absolute;
-  top: 439px;
+  top: 450px;
   left: 950px;
   transform: scaleX(-1);
   transition: all ease-in-out;
 }
 
-.villan-animation{
+.villan-animation {
   animation: villan 3s infinite;
-
 }
 
-#villan img{
+#villan img {
   height: 20vh;
 }
 
-.jump-animation{
+.jump-animation {
   animation: jump 2s linear;
 }
 
-@keyframes villan {
-  0%{
-    left: 950px;
+.character {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  gap: 20px;
+}
 
+.charater_card {
+  height: 30vh;
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #808080db;
+  border-radius: 20px;
+}
+
+.charater_card:hover{
+  background: transparent;
+}
+
+
+@keyframes villan {
+  0% {
+    left: 950px;
   }
-  100%{
-    left: -200px
+  100% {
+    left: -200px;
   }
 }
 
 @keyframes jump {
-  0%{
+  0% {
     top: 460px;
   }
 
-  50%{
+  50% {
     top: 150px;
   }
 
-  75%{
+  75% {
     top: 150px;
   }
 
-  100%{
+  100% {
     top: 460px;
   }
 }
